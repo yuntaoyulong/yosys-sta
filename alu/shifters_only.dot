@@ -1,0 +1,28 @@
+digraph "ALU" {
+label="ALU";
+rankdir="LR";
+remincross=true;
+n1 [ shape=diamond, label="_io_out_T_12", color="black", fontcolor="black"];
+n2 [ shape=diamond, label="_io_out_T_16", color="black", fontcolor="black"];
+n3 [ shape=diamond, label="_io_out_T_5", color="black", fontcolor="black"];
+v1 [ label="io_in1" ];
+v2 [ label="io_in2 [4:0]" ];
+c7 [ shape=record, label="{{<p4> A|<p5> B}|$3\n$shl|{<p6> Y}}",  ];
+x0 [ shape=record, style=rounded, label="0 -&gt; 62:32 |<s0> 31:0 - 31:0 ", color="black", fontcolor="black" ];
+x0:e -> c7:p4:w [arrowhead=odiamond, arrowtail=odiamond, dir=both, color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+v3 [ label="io_in1" ];
+v4 [ label="io_in2 [4:0]" ];
+c8 [ shape=record, label="{{<p4> A|<p5> B}|$7\n$shr|{<p6> Y}}",  ];
+v5 [ label="io_in1" ];
+v6 [ label="io_in2 [4:0]" ];
+c9 [ shape=record, label="{{<p4> A|<p5> B}|$8\n$sshr|{<p6> Y}}",  ];
+c8:p6:e -> n1:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c9:p6:e -> n2:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+c7:p6:e -> n3:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+v1:e -> x0:s0:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+v2:e -> c7:p5:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+v3:e -> c8:p4:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+v4:e -> c8:p5:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+v5:e -> c9:p4:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+v6:e -> c9:p5:w [color="black", fontcolor="black", style="setlinewidth(3)", label=""];
+}
